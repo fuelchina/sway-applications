@@ -3,6 +3,7 @@
 import { useConnectUI, useDisconnect, useIsConnected, useWallet } from "@fuels/react";
 import { Button } from "./ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { truncateAddress } from "@/lib/utils";
 
 export default function Header() {
   const { isConnected } = useIsConnected();
@@ -13,7 +14,7 @@ export default function Header() {
   return <>
     <header className="flex items-center py-4">
       <p className="flex-1 text-center font-mono">
-        {wallet?.address.toAddress()}
+        {truncateAddress(wallet?.address.toAddress() || '')}
       </p>
       {
         isConnected
